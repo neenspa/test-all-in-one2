@@ -1,0 +1,21 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: shop-frontend-nb
+  namespace: test-vm-terraform2
+  labels:
+    name: front-end
+    backstage.io/kubernetes-id: test-all-in-one2
+    app.kubernetes.io/name: test-all-in-one2
+    rht-gitops.com/janus-argocd: test-all-in-one2
+spec:
+  #host:
+  to:
+    kind: Service
+    name: front-end
+    weight: 100
+  port:
+    targetPort: 8079
+  wildcardPolicy: None
+  tls:
+    termination: edge
